@@ -7,8 +7,10 @@ import requests
 # --1-- TOKEN / ENV
 
 TOKEN = os.getenv("DISCORD_TOKEN")
+XAI_API_KEY = os.getenv("XAI_API_KEY")
 
-print("TOKEN FOUND:", TOKEN is not None)
+
+##print("TOKEN FOUND:", TOKEN is not None)
 
 # --2-- Discord bot
 
@@ -34,7 +36,7 @@ def translate_with_grok(text):
         "messages": [
             {
                 "role": "system",
-                "content": "You are a professional translator. Translate everything into natural English. If already English, return unchanged."
+                "content": "You are a professional translator. Translate everything into natural English. If already English, return unchanged. Output ONLY the translation, no explanation."
             },
             {
                 "role": "user",
@@ -58,14 +60,27 @@ async def on_ready():
 #async def ping(ctx):
 #    await ctx.send("pong")
 
+@bot.command()
+async def t(ctx, *, text):
+
+    await ctx.trigger_typing()
+
+    try:
+        result = translate_with_grok(text)
+        await ctx.send(result)
+
+    except Exception as e:
+        await ctx.send(f"Error: {e}")
+        
+
 #@bot.command()
 #async def t(ctx, *, text):
 #   result = translate_with_grok(text)
 #    await ctx.send(result)
 
-@bot.command()
-async def t(ctx, *, text):
-    await ctx.send(f"收到：{text}")
+#@bot.command()
+#async def t(ctx, *, text):
+#    await ctx.send(f"收到：{text}")
     
 # --5-- Discord command
 
