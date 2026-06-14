@@ -70,7 +70,17 @@ async def on_ready():
 #    await ctx.send("pong")
 
 @bot.command()
-async def en(ctx, *, text):
+async def t(ctx, *, text):
+    
+    lang_map = {
+        "en": "English",
+        "c": "Chinese (Simplified)",
+        "zh": "Chinese (Simplified)",
+        "ja": "Japanese",
+        "fr": "French"
+    }
+
+    target = lang_map.get(lang, "English")
 
     async with ctx.typing():
         try:
@@ -80,16 +90,6 @@ async def en(ctx, *, text):
         except Exception as e:
             await ctx.send(f"Error: {e}")
 
-@bot.command()
-async def cn(ctx, *, text):
-
-    async with ctx.typing():
-        try:
-            result = translate_with_grok(text, "Chinese (Simplified)")
-            await ctx.send(result)
-
-        except Exception as e:
-            await ctx.send(f"Error: {e}")
         
 
 #@bot.command()
