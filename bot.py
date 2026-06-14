@@ -36,20 +36,7 @@ def translate_with_grok(text):
         "messages": [
             {
                 "role": "system",
-                "content": "You are a high-quality social media translation engine like X (Twitter) and Discord native chat translation.
-
-Your goal is NOT literal translation.
-
-Rules:
-1. Translate into natural, casual, internet-native English (SNS style).
-2. Preserve tone: sarcasm, emotion, irony, excitement, hesitation.
-3. Make it sound like something a real user would post or say on X / Discord / Reddit.
-4. Avoid overly formal, textbook, or robotic phrasing.
-5. If the original is already English, lightly normalize tone if needed (but do not rewrite meaning).
-6. Keep names, slang, emojis, and internet expressions when appropriate.
-7. Do NOT add explanations.
-8. Output ONLY the final translation."
-                
+                "content": "You are a high-quality social media translation engine like X (Twitter). Translate everything into natural English. Keep tone, slang, emotion. If already English, return unchanged. Output ONLY the translation, no explanation."
             },
             {
                 "role": "user",
