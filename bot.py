@@ -82,11 +82,11 @@ async def t(ctx, lang, *, text):
         "fr": "French"
     }
 
-    target = lang_map.get(lang, target)
+    target = lang_map.get(lang, target_language)
 
     async with ctx.typing():
         try:
-            result = translate_with_grok(text, target)
+            result = translate_with_grok(text, target_language)
             await ctx.send(result)
 
         except Exception as e:
