@@ -23,7 +23,7 @@ bot = commands.Bot(
 
 # --3-- Grok API function
 
-def translate_with_grok(text, target_language="English"):
+def translate_with_grok(text, target_language):
 
     url = "https://api.x.ai/v1/chat/completions"
 
