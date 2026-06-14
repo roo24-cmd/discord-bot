@@ -23,7 +23,8 @@ bot = commands.Bot(
 
 # --3-- Grok API function
 
-def translate_with_grok(text):
+def translate_with_grok(text, target_language="English"):
+
     url = "https://api.x.ai/v1/chat/completions"
 
     headers = {
@@ -36,7 +37,10 @@ def translate_with_grok(text):
         "messages": [
             {
                 "role": "system",
-                "content": "You are a high-quality social media translation engine like X (Twitter). Translate everything into natural English. Keep tone, slang, emotion. If already English, return unchanged. Output ONLY the translation, no explanation."
+                "content": (
+                    "You are a high-quality social media translation engine like X (Twitter). Translate everything into natural English. Keep tone, slang, emotion. Output ONLY the translation, no explanation."
+                    f"Translate into {target_language}.\n\n".
+                    )
             },
             {
                 "role": "user",
@@ -66,11 +70,22 @@ async def on_ready():
 #    await ctx.send("pong")
 
 @bot.command()
-async def t(ctx, *, text):
+async def en(ctx, *, text):
 
     async with ctx.typing():
         try:
-            result = translate_with_grok(text)
+            result = translate_with_grok(text, "English")
+            await ctx.send(result)
+
+        except Exception as e:
+            await ctx.send(f"Error: {e}")
+
+@bot.command()
+async def cn(ctx, *, text):
+
+    async with ctx.typing():
+        try:
+            result = translate_with_grok(text, "Chinese (Simplified)")
             await ctx.send(result)
 
         except Exception as e:
