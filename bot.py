@@ -58,10 +58,14 @@ async def on_ready():
 #async def ping(ctx):
 #    await ctx.send("pong")
 
+#@bot.command()
+#async def t(ctx, *, text):
+#   result = translate_with_grok(text)
+#    await ctx.send(result)
+
 @bot.command()
 async def t(ctx, *, text):
-    result = translate_with_grok(text)
-    await ctx.send(result)
+    await ctx.send(f"收到：{text}")
     
 # --5-- Discord command
 
