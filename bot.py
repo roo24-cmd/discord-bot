@@ -38,9 +38,11 @@ def translate_with_grok(text, target_language="English"):
             {
                 "role": "system",
                 "content": (
-                    "You are a high-quality social media translation engine like X (Twitter). Translate everything into natural English. Keep tone, slang, emotion. Output ONLY the translation, no explanation."
-                    f"Translate into {target_language}.\n\n".
-                    )
+                   "You are a high-quality social media translation engine like X (Twitter). "
+                   "Translate everything into natural English. "
+                   "Keep tone, slang, emotion. "
+                   "Output ONLY the translation, no explanation. "
+                   f"Translate into {target_language}." )
             },
             {
                 "role": "user",
