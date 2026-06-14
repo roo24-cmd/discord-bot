@@ -72,7 +72,7 @@ async def on_ready():
 #    await ctx.send("pong")
 
 @bot.command()
-async def t(ctx, *, text):
+async def t(ctx, lang, *, text):
     
     lang_map = {
         "en": "English",
