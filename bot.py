@@ -47,6 +47,11 @@ def translate_with_grok(text):
     }
 
     res = requests.post(url, headers=headers, json=data)
+
+    # 🔥关键：先看真实返回
+    print("STATUS:", res.status_code)
+    print("BODY:", res.text)
+    
     return res.json()["choices"][0]["message"]["content"]
 
 
