@@ -38,11 +38,11 @@ def translate_with_grok(text, target_language):
             {
                 "role": "system",
                 "content": (
-                   "You are a high-quality social media translation engine like X (Twitter). "
-                   "Translate everything into {target_language}. "
-                   "Keep tone, slang, emotion. "
-                   "Output ONLY the translation, no explanation. "
-                   f" Always output language: {target_language}." )
+    f"You are a high-quality social media translation engine like X (Twitter). "
+    f"Translate everything into {target_language}. "
+    "Keep tone, slang, emotion. "
+    "Output ONLY the translation, no explanation."
+)
             },
             {
                 "role": "user",
@@ -82,11 +82,11 @@ async def t(ctx, lang, *, text):
         "fr": "French"
     }
 
-    target = lang_map.get(lang, "English")
+    target = lang_map.get(lang, target)
 
     async with ctx.typing():
         try:
-            result = translate_with_grok(text, "English")
+            result = translate_with_grok(text, target)
             await ctx.send(result)
 
         except Exception as e:
