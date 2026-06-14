@@ -63,14 +63,13 @@ async def on_ready():
 @bot.command()
 async def t(ctx, *, text):
 
-    await ctx.trigger_typing()
+    async with ctx.typing():
+        try:
+            result = translate_with_grok(text)
+            await ctx.send(result)
 
-    try:
-        result = translate_with_grok(text)
-        await ctx.send(result)
-
-    except Exception as e:
-        await ctx.send(f"Error: {e}")
+        except Exception as e:
+            await ctx.send(f"Error: {e}")
         
 
 #@bot.command()
