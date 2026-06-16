@@ -144,10 +144,10 @@
 import os
 import discord
 from discord.ext import commands
-from dotenv import load_dotenv
+#from dotenv import load_dotenv
 import requests
 
-load_dotenv()
+#load_dotenv()
 
 # =====================
 # 1. ENV
